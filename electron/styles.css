@@ -299,6 +299,10 @@ body {
 
 .view-cube-face > span {
   display: inline-block;
+}
+
+.face-top > span,
+.face-bottom > span {
   transform: rotate(180deg);
 }
 

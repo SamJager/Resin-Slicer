@@ -728,6 +728,7 @@ function updateViewCube() {
 }
 
 function viewCubeMatrix({ right, up, zAxis }) {
+  const cssRight = scaleVec(right, -1);
   const cssUp = scaleVec(up, -1);
   const localAxes = [
     [1, 0, 0],
@@ -735,7 +736,7 @@ function viewCubeMatrix({ right, up, zAxis }) {
     [0, 1, 0]
   ];
   const values = localAxes.flatMap((axis) => [
-    dot(axis, right),
+    dot(axis, cssRight),
     dot(axis, cssUp),
     dot(axis, zAxis),
     0
