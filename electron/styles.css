@@ -450,6 +450,8 @@ body {
   font-size: 13px;
   pointer-events: auto;
   cursor: pointer;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   transition: opacity 0.4s ease;
 }
 
@@ -501,6 +503,7 @@ body {
 
 .message-history-list {
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 6px 10px;
   display: grid;
   gap: 4px;
@@ -508,10 +511,16 @@ body {
 
 .message-history-entry {
   display: grid;
-  grid-template-columns: 58px 1fr;
+  /* minmax(0, 1fr) lets the text column shrink below long unbreakable
+     strings (file paths) instead of widening the panel past the viewer. */
+  grid-template-columns: 58px minmax(0, 1fr);
   gap: 8px;
   padding: 3px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.message-history-entry span {
+  overflow-wrap: anywhere;
 }
 
 .message-history-entry time {
